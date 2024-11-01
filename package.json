@@ -4,7 +4,8 @@
   "description": "Backend de autenticação via OPT",
   "main": "index.js",
   "scripts": {
-    "dev": "node --import=tsx --watch --env-file=.env ./src/server.ts"
+    "dev": "node --import=tsx --watch --env-file=.env ./src/server.ts",
+    "postgres": "docker-compose up -d"
   },
   "author": "",
   "license": "ISC",
