@@ -9,11 +9,12 @@ export const sendEmail = async(to: string, subject: string, body:string) => {
 
     try {
         await mailtrap.testing.send({
-            from: {name: 'Sistema', email: 'hello@example.com'},
+            from: {name: 'Sistema', email: 'contato@example.com'},
             to:[{email: to}],
             subject,
-            text: body
-        })
+            text: body,
+            category: "Integration Test",
+        }).then(console.log, console.error);
         return true;
     } catch (err) {
         return false;
