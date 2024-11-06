@@ -23,3 +23,30 @@ export const generateOTP = async(userId: number) => {
 
     return otp;
 }
+
+export const validateOTP = async (id: string, code: string) => {
+    const otp = await prisma.otp.findFirst({
+        select: {
+            user: true
+        },
+        where: {
+            id, 
+            code,
+            expiresAt: {
+                gt: new Date() // data de expiração tem que ser maior que a data e hora atual
+            },
+            used: false
+        }
+    });
+
+    if( otp && otp.user){
+        await prisma.otp.update({
+            where: { id },
+            data: { used: true }
+        })
+
+        return otp.user;
+    }
+
+    return false;
+}

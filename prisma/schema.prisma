@@ -27,5 +27,5 @@ model Otp {
   expiresAt DateTime
   used      Boolean  @default(false)
 
-  use User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 }

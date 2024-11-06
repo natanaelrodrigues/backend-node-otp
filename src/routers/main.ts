@@ -2,9 +2,10 @@ import { Router } from "express";
 import * as pingController from '../controllers/ping'
 import * as authController from '../controllers/auth'
 
-export const maintRouter = Router();
+export const mainRouter = Router();
 
-maintRouter.get('/ping', pingController.ping);
+mainRouter.get('/ping', pingController.ping);
 
-maintRouter.post('/auth/signin', authController.signin)
-maintRouter.post('/auth/signup', authController.signup)
+mainRouter.post('/auth/signin', authController.signin)
+mainRouter.post('/auth/signup', authController.signup)
+mainRouter.post('/auth/useotp', authController.useOTP)
